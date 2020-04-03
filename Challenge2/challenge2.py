@@ -18,6 +18,7 @@ def draw_hist(sizeArray):
         pl.ylabel("Frequency")
         pl.title("The Frequency of different Time Diff")
         #pl.savefig("bin=i.png")
+        #pl.clf()
         pl.show()
         
 if __name__ == "__main__":
