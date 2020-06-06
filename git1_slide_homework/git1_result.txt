@@ -1,0 +1,36 @@
+e1b77c9 sched/kasan: remove stale KASAN poison after hotplug
+ kernel/sched/core.c | 3 +++
+ 1 file changed, 3 insertions(+)
+5955102 wrappers for ->i_mutex access
+ kernel/sched/core.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+9c03ee1 sched: Fix crash in sched_init_numa()
+ kernel/sched/core.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+46a5d16 rcu: Stop disabling interrupts in scheduler fastpaths
+ kernel/sched/core.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+b036762 sched/fair: Move the cache-hot 'load_avg' variable into its own cacheline
+ kernel/sched/core.c | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+ed82b8a sched/core: Move the sched_to_prio[] arrays out of line
+ kernel/sched/core.c | 45 +++++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 43 insertions(+), 2 deletions(-)
+ad936d8 sched/fair: Make it possible to account fair load avg consistently
+ kernel/sched/core.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+8643cda sched/core, locking: Document Program-Order guarantees
+ kernel/sched/core.c | 91 +++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 91 insertions(+)
+b3e0b1b locking, sched: Introduce smp_cond_acquire() and use it
+ kernel/sched/core.c | 8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
+b53202e cgroup: kill cgrp_ss_priv[CGROUP_CANFORK_COUNT] and friends
+ kernel/sched/core.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+01783e0 sched/core: Use list_is_singular() in sched_can_stop_tick()
+ kernel/sched/core.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+3ea94de sched/core: Fix incorrect wait time and wait count statistics
+ kernel/sched/core.c | 15 +++++++++++++--
+ 1 file changed, 13 insertions(+), 2 deletions(-)
