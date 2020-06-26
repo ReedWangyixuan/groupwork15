@@ -31,13 +31,14 @@ v = [v44_216,v49_216,v414_173,v419_109]
 
 def classify(versions_info):
     '''
-    Find the child versions which are modified relatively more.
+    Find the child versions which are modified relatively less.
     versions_info: the list of the 2 dimentions which is the sum of the add and del times and the time interval of each small version
     return: the subscripts of the smallest cluster's data in the initail list.
     '''
     big_mofify_version = []
     for i in versions_info:
         test = KMeansClusterer(i,2)
+        test.show_2d()
         if len(test.location()[0]) < len(test.location()[1]):
             big_mofify_version.append(test.location()[0])
         else:

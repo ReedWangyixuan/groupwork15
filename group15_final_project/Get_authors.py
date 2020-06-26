@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 
 '''
-This py can find authors' number of each version.
+This py can find authors' number of each version, is can also find
+the function of the regression of authors' number and draw a plot.
 '''
 
 __author__ = "Group 15 members in DataScience of Lanzhou University"
@@ -15,6 +16,9 @@ __status__ = "Done"
 
 
 import re, subprocess
+from sklearn import linear_model
+import numpy as np
+import matplotlib.pyplot as plt
 
 
 def GetAuthors(scope,address):
@@ -42,7 +46,38 @@ def GetAuthors(scope,address):
     return auts
 
 
+def author_regression(auts):
+    '''
+    This function can make a regression for the authors' number and draw the plot.
+    return: the function of the regression.
+    '''
+    versions = []
+    for i in range(len(auts)):
+        versions.append([i])
+        plt.scatter(i,auts[i])
+    plt.xlabel('version')
+    plt.ylabel('authors')
+
+    model = linear_model.LinearRegression()
+    model.fit(np.array(versions),np.array(auts))
+
+    x = np.arange(0,len(auts),1)
+    y = [model.predict([[p]]) for p in x]
+    plt.plot(x, y)
+    plt.scatter(0, 0, c = "white")
+    plt.show()
+
+    k = ((y[2])-y[1])/(x[2]-x[1])
+    b = (x[2]*y[1]-x[1]*y[2])/(x[2]-x[1])
+
+    return "y = " + str(float(k)) + "x+" + str(float(b))
+
+
 if __name__ == "__main__":
     address = "/Users/apple/linux-stable"
     scope = ("v4.0","v4.19")
-    print(GetAuthors(scope,address))#[951, 948, 994, 956, 951, 1030, 946, 973, 1005, 1010, 1014, 1085, 1039, 1082, 1108, 1096, 1055, 1066, 1086, 1094]
+    #auts = GetAuthors(scope,address)#[951, 948, 994, 956, 951, 1030, 946, 973, 1005, 1010, 1014, 1085, 1039, 1082, 1108, 1096, 1055, 1066, 1086, 1094]
+    auts = [951, 948, 994, 956, 951, 1030, 946, 973, 1005, 1010, 1014, 1085, 1039, 1082, 1108, 1096, 1055, 1066, 1086, 1094]
+
+
+    print(author_regression(auts))
